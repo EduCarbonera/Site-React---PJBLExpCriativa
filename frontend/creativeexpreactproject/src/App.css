@@ -27,12 +27,26 @@ body {
 
 .cabecalho {
   background-color: #fed582;
-  color: #3b2a1a;            
+  color: #3b2a1a;
   padding: 16px 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+
+  /* A borda externa marrom grossa */
+  border: 4px solid #6b3013; 
+  
+  /* Sombras internas para criar o efeito de relevo dourado */
+  box-shadow: 
+    inset 0 4px 0 #fff2b3,   /* Brilho clarinho no topo */
+    inset 0 -4px 0 #d67a00,  /* Linha dourada na base */
+    inset 4px 0 0 #d67a00,   /* Linha dourada na esquerda */
+    inset -4px 0 0 #d67a00,  /* Linha dourada na direita */
+    0 6px 0 rgba(0,0,0,0.15); /* Sombra suave projetada no fundo */
+
+  /* Pequeno ajuste para a caixa não ficar colada no topo/lados */
+  margin: 10px 10px 20px 10px;
+  border-radius: 2px; /* Mantém o aspecto de pixel */
 }
 
 .cabecalho h1 {
