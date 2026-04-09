@@ -59,7 +59,7 @@ function Formulario({ vegetal, onVoltar }) {
 
   return (
     <div className="form-container">
-      <h2>{vegetal ? '✏️ Editar Vegetal' : '➕ Novo Vegetal'}</h2>
+      <h2>{vegetal ? ' Editar Vegetal' : '➕ Novo Vegetal'}</h2>
 
       {erro && <div className="mensagem-erro">{erro}</div>}
       {sucesso && <div className="mensagem-sucesso">{sucesso}</div>}
@@ -70,7 +70,6 @@ function Formulario({ vegetal, onVoltar }) {
           type="text"
           value={nome}
           onChange={(e) => setNome(e.target.value)}
-          placeholder="Ex: Morango"
         />
       </div>
 
@@ -91,7 +90,6 @@ function Formulario({ vegetal, onVoltar }) {
           type="number"
           value={diasCrescimento}
           onChange={(e) => setDiasCrescimento(e.target.value)}
-          placeholder="Ex: 8"
         />
       </div>
 
@@ -101,7 +99,6 @@ function Formulario({ vegetal, onVoltar }) {
           type="number"
           value={precoSemente}
           onChange={(e) => setPrecoSemente(e.target.value)}
-          placeholder="Ex: 100"
         />
       </div>
 
@@ -111,7 +108,6 @@ function Formulario({ vegetal, onVoltar }) {
           type="number"
           value={precoVenda}
           onChange={(e) => setPrecoVenda(e.target.value)}
-          placeholder="Ex: 200"
         />
       </div>
 
