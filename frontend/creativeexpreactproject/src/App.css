@@ -6,8 +6,22 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0ede3;
   color: #3b2a1a;
+  
+  /* Caminho da sua imagem */
+  background-image: url('./fundo.png.webp');
+
+  /* Impede que a imagem se repita */
+  background-repeat: no-repeat;
+
+  /* Faz a imagem cobrir a tela inteira */
+  background-size: cover;
+
+  /* Mantém o fundo fixo enquanto você rola a página */
+  background-attachment: fixed;
+
+  /* Centraliza a imagem */
+  background-position: center;
 }
 
 /* Estrutura principal para fixar o rodapé */
