@@ -1,6 +1,5 @@
 const db = require('../db')
 
-// lista todos os vegetais
 function listar(req, res) {
   db.query('SELECT * FROM vegetais', (err, resultado) => {
     if (err) {
@@ -11,7 +10,6 @@ function listar(req, res) {
   })
 }
 
-// busca um vegetal pelo id
 function buscarPorId(req, res) {
   const id = req.params.id
 
@@ -28,11 +26,9 @@ function buscarPorId(req, res) {
   })
 }
 
-// cadastra um novo vegetal
 function cadastrar(req, res) {
   const { nome, estacao, dias_crescimento, preco_semente, preco_venda } = req.body
 
-  // validação básica
   if (!nome || !estacao || !dias_crescimento || !preco_semente || !preco_venda) {
     res.status(400).json({ erro: 'Preencha todos os campos' })
     return
@@ -49,12 +45,10 @@ function cadastrar(req, res) {
   })
 }
 
-// atualiza um vegetal existente
 function atualizar(req, res) {
   const id = req.params.id
   const { nome, estacao, dias_crescimento, preco_semente, preco_venda } = req.body
 
-  // validação básica
   if (!nome || !estacao || !dias_crescimento || !preco_semente || !preco_venda) {
     res.status(400).json({ erro: 'Preencha todos os campos' })
     return
@@ -71,7 +65,6 @@ function atualizar(req, res) {
   })
 }
 
-// deleta um vegetal
 function deletar(req, res) {
   const id = req.params.id
 
