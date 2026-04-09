@@ -26,8 +26,8 @@ body {
 }
 
 .cabecalho {
-  background-color: #5a8a3c;
-  color: white;
+  background-color: #fed582;
+  color: #3b2a1a;            
   padding: 16px 32px;
   display: flex;
   justify-content: space-between;
