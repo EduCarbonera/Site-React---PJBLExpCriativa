@@ -30,7 +30,7 @@ function App() {
   }
 
   return (
-    <div>
+    <>
       <header className="cabecalho">
         <h1 onClick={irParaLista}>Stardew Valley Vegetais</h1>
         <p className="nome-aluno">Eduardo Mendes Carbonera</p>
@@ -62,9 +62,8 @@ function App() {
       </main>
 
       <footer className="rodape">
-        <p>Desenvolvido por Eduardo Mendes Carbonera</p>
       </footer>
-    </div>
+    </>
   )
 }
 

@@ -10,6 +10,13 @@ body {
   color: #3b2a1a;
 }
 
+/* Estrutura principal para fixar o rodapé */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 /* Cabeçalho */
 .cabecalho {
   background-color: #5a8a3c;
@@ -40,6 +47,8 @@ body {
   max-width: 900px;
   margin: 32px auto;
   padding: 0 16px;
+  flex: 1;
+  width: 100%;
 }
 
 /* Rodapé */
@@ -49,7 +58,7 @@ body {
   text-align: center;
   padding: 12px;
   font-size: 13px;
-  margin-top: 48px;
+  width: 100%;
 }
 
 /* Botões */
