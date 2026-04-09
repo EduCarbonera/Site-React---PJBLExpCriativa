@@ -8,30 +8,23 @@ body {
   font-family: Arial, sans-serif;
   color: #3b2a1a;
   
-  /* Caminho da sua imagem */
   background-image: url('./fundo.png.webp');
 
-  /* Impede que a imagem se repita */
   background-repeat: no-repeat;
 
-  /* Faz a imagem cobrir a tela inteira */
   background-size: cover;
 
-  /* Mantém o fundo fixo enquanto você rola a página */
   background-attachment: fixed;
 
-  /* Centraliza a imagem */
   background-position: center;
 }
 
-/* Estrutura principal para fixar o rodapé */
 #root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-/* Cabeçalho */
 .cabecalho {
   background-color: #5a8a3c;
   color: white;
@@ -56,7 +49,6 @@ body {
   opacity: 0.9;
 }
 
-/* Conteúdo principal */
 .conteudo {
   max-width: 900px;
   margin: 32px auto;
@@ -65,7 +57,6 @@ body {
   width: 100%;
 }
 
-/* Rodapé */
 .rodape {
   background-color: #3b2a1a;
   color: #f0ede3;
@@ -75,7 +66,6 @@ body {
   width: 100%;
 }
 
-/* Botões */
 .btn {
   padding: 8px 16px;
   border: none;
@@ -121,7 +111,6 @@ body {
   background-color: #666;
 }
 
-/* Mensagens de erro e sucesso */
 .mensagem-erro {
   background-color: #f8d7da;
   color: #721c24;
@@ -138,7 +127,6 @@ body {
   margin-bottom: 16px;
 }
 
-/* Tabela */
 .tabela {
   width: 100%;
   border-collapse: collapse;
@@ -173,7 +161,6 @@ body {
   gap: 8px;
 }
 
-/* Formulário */
 .form-container {
   background-color: white;
   padding: 24px;
@@ -219,7 +206,6 @@ body {
   margin-top: 20px;
 }
 
-/* Detalhe */
 .detalhe-container {
   background-color: white;
   padding: 24px;
@@ -256,7 +242,6 @@ body {
   margin-top: 20px;
 }
 
-/* Topo da lista */
 .lista-topo {
   display: flex;
   justify-content: space-between;

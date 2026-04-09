@@ -2,8 +2,6 @@ import { useState } from 'react'
 import axios from 'axios'
 
 function Formulario({ vegetal, onVoltar }) {
-  // se veio um vegetal, preenche os campos (modo edição)
-  // se não veio, deixa vazio (modo cadastro)
   const [nome, setNome] = useState(vegetal ? vegetal.nome : '')
   const [estacao, setEstacao] = useState(vegetal ? vegetal.estacao : '')
   const [diasCrescimento, setDiasCrescimento] = useState(vegetal ? vegetal.dias_crescimento : '')
@@ -17,7 +15,6 @@ function Formulario({ vegetal, onVoltar }) {
     setErro('')
     setSucesso('')
 
-    // validação no frontend também
     if (!nome || !estacao || !diasCrescimento || !precoSemente || !precoVenda) {
       setErro('Preencha todos os campos!')
       return
@@ -31,7 +28,6 @@ function Formulario({ vegetal, onVoltar }) {
       preco_venda: Number(precoVenda)
     }
 
-    // se tem vegetal, é edição (PUT), senão é cadastro (POST)
     if (vegetal) {
       axios.put(`http://localhost:3001/vegetais/${vegetal.id}`, dados)
         .then(() => {
@@ -44,7 +40,6 @@ function Formulario({ vegetal, onVoltar }) {
       axios.post('http://localhost:3001/vegetais', dados)
         .then(() => {
           setSucesso('Vegetal cadastrado com sucesso!')
-          // limpa os campos após cadastrar
           setNome('')
           setEstacao('')
           setDiasCrescimento('')
