@@ -1,13 +1,32 @@
 const db = require('../db')
 
 function listar(req, res) {
-  db.query('SELECT * FROM vegetais', (err, resultado) => {
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 5;
+  const offset = (page - 1) * limit;
+
+  const sql = 'SELECT * FROM vegetais LIMIT ? OFFSET ?';
+  
+  db.query(sql, [limit, offset], (err, resultado) => {
     if (err) {
-      res.status(500).json({ erro: 'Erro ao buscar vegetais' })
-      return
+      res.status(500).json({ erro: 'Erro ao buscar vegetais' });
+      return;
     }
-    res.json(resultado)
-  })
+
+    db.query('SELECT COUNT(*) as total FROM vegetais', (err, totalResultado) => {
+      if (err) {
+        res.status(500).json({ erro: 'Erro ao contar vegetais' });
+        return;
+      }
+      
+      const total = totalResultado[0].total;
+      res.json({
+        dados: resultado,
+        totalPaginas: Math.ceil(total / limit),
+        paginaAtual: page
+      });
+    });
+  });
 }
 
 function buscarPorId(req, res) {

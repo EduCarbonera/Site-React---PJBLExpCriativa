@@ -1,21 +1,25 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { Eye, Pencil, Trash2, ChevronLeft, ChevronRight } from 'lucide-react';
 
 function Lista({ onCadastrar, onEditar, onVerDetalhe }) {
   const [vegetais, setVegetais] = useState([])
+  const [pagina, setPagina] = useState(1)
+  const [totalPaginas, setTotalPaginas] = useState(1)
   const [erro, setErro] = useState('')
 
   useEffect(() => {
     buscarVegetais()
-  }, [])
+  }, [pagina])
 
   function buscarVegetais() {
-    axios.get('http://localhost:3001/vegetais')
+    axios.get(`http://localhost:3001/vegetais?page=${pagina}&limit=5`)
       .then((resposta) => {
-        setVegetais(resposta.data)
+        setVegetais(resposta.data.dados)
+        setTotalPaginas(resposta.data.totalPaginas)
       })
       .catch(() => {
-        setErro('Erro ao carregar vegetais. Verifique se o servidor está rodando.')
+        setErro('Erro ao carregar vegetais. Verifique a conexão com o servidor.')
       })
   }
 
@@ -32,6 +36,9 @@ function Lista({ onCadastrar, onEditar, onVerDetalhe }) {
       })
   }
 
+  const paginaAnterior = () => setPagina(prev => Math.max(prev - 1, 1))
+  const proximaPagina = () => setPagina(prev => Math.min(prev + 1, totalPaginas))
+
   return (
     <div>
       <div className="lista-topo">
@@ -43,24 +50,20 @@ function Lista({ onCadastrar, onEditar, onVerDetalhe }) {
 
       {erro && <div className="mensagem-erro">{erro}</div>}
 
-      {vegetais.length === 0 && !erro && (
-        <p>Nenhum vegetal cadastrado ainda.</p>
-      )}
-
-      {vegetais.length > 0 && (
-        <table className="tabela">
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>Estação</th>
-              <th>Dias para crescer</th>
-              <th>Preço semente</th>
-              <th>Preço venda</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            {vegetais.map((vegetal) => (
+      <table className="tabela">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Estação</th>
+            <th>Dias para crescer</th>
+            <th>Preço semente</th>
+            <th>Preço venda</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          {vegetais.length > 0 ? (
+            vegetais.map((vegetal) => (
               <tr key={vegetal.id}>
                 <td>{vegetal.nome}</td>
                 <td>{vegetal.estacao}</td>
@@ -72,28 +75,57 @@ function Lista({ onCadastrar, onEditar, onVerDetalhe }) {
                     <button
                       className="btn btn-azul"
                       onClick={() => onVerDetalhe(vegetal)}
+                      title="Ver Detalhes"
                     >
-                      Ver
+                      <Eye size={18} />
                     </button>
                     <button
                       className="btn btn-verde"
                       onClick={() => onEditar(vegetal)}
+                      title="Editar"
                     >
-                      Editar
+                      <Pencil size={18} />
                     </button>
                     <button
                       className="btn btn-vermelho"
                       onClick={() => deletarVegetal(vegetal.id)}
+                      title="Deletar"
                     >
-                      Deletar
+                      <Trash2 size={18} />
                     </button>
                   </div>
                 </td>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
+            ))
+          ) : (
+            <tr>
+              <td colSpan="6" style={{ textAlign: 'center', padding: '20px' }}>
+                Nenhum vegetal encontrado nesta página.
+              </td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+
+      <div className="paginacao">
+        <button 
+          className="btn btn-cinza" 
+          onClick={paginaAnterior} 
+          disabled={pagina === 1}
+        >
+          <ChevronLeft size={18} /> Anterior
+        </button>
+        
+        <span>Página {pagina} de {totalPaginas}</span>
+
+        <button 
+          className="btn btn-cinza" 
+          onClick={proximaPagina} 
+          disabled={pagina === totalPaginas}
+        >
+          Próximo <ChevronRight size={18} />
+        </button>
+      </div>
     </div>
   )
 }
