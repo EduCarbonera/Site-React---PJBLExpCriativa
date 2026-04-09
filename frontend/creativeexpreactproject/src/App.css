@@ -33,20 +33,17 @@ body {
   justify-content: space-between;
   align-items: center;
 
-  /* A borda externa marrom grossa */
   border: 4px solid #6b3013; 
   
-  /* Sombras internas para criar o efeito de relevo dourado */
   box-shadow: 
-    inset 0 4px 0 #fff2b3,   /* Brilho clarinho no topo */
-    inset 0 -4px 0 #d67a00,  /* Linha dourada na base */
-    inset 4px 0 0 #d67a00,   /* Linha dourada na esquerda */
-    inset -4px 0 0 #d67a00,  /* Linha dourada na direita */
-    0 6px 0 rgba(0,0,0,0.15); /* Sombra suave projetada no fundo */
+    inset 0 4px 0 #fff2b3,
+    inset 0 -4px 0 #d67a00,
+    inset 4px 0 0 #d67a00,
+    inset -4px 0 0 #d67a00,
+    0 6px 0 rgba(0,0,0,0.15);
 
-  /* Pequeno ajuste para a caixa não ficar colada no topo/lados */
   margin: 10px 10px 20px 10px;
-  border-radius: 2px; /* Mantém o aspecto de pixel */
+  border-radius: 2px;
 }
 
 .cabecalho h1 {
@@ -265,4 +262,26 @@ body {
 
 .lista-topo h2 {
   color: #5a8a3c;
+}
+
+.paginacao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 24px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid #6b3013;
+}
+
+.paginacao span {
+  font-weight: bold;
+  color: #3b2a1a;
+}
+
+.paginacao button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
