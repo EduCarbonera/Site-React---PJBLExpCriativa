@@ -62,6 +62,7 @@ function App() {
       </main>
 
       <footer className="rodape">
+        <p>Desenvolvido por Eduardo Mendes Carbonera</p>
       </footer>
     </>
   )
